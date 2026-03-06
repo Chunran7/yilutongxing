@@ -16,7 +16,7 @@
             <div class="video-card" @click="goToVideo(video.id)">
               <div class="video-thumbnail-container">
                 <img
-                  :src="normalizeMedia(video.cover) || 'https://placehold.co/400x300/2ecc71/ffffff?text=Video+' + video.id"
+                  :src="normalizeMedia(video.cover) || 'https://placehold.co/400x300/5D9CEC/ffffff?text=Video+' + video.id"
                   alt="视频封面" class="video-thumbnail" />
                 <div class="video-overlay">
                   <div class="video-play-button">

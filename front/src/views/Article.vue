@@ -15,11 +15,11 @@
             <div class="article-card" @click="goToArticle(article.id)">
               <div class="article-img-container">
                 <img
-                  :src="normalizeMedia(article.firstPicture) || 'https://placehold.co/600x400/3498db/ffffff?text=Travel+' + article.id"
+                  :src="normalizeMedia(article.firstPicture) || 'https://placehold.co/600x400/5D9CEC/ffffff?text=Article+' + article.id"
                   alt="封面图" class="article-img" />
                 <div class="article-img-overlay"></div>
-                <div class="article-category">旅行攻略</div>
-                <div class="article-reading-time">5分钟阅读</div>
+                <div class="article-category">哀伤辅导</div>
+                <div class="article-reading-time">5 分钟阅读</div>
               </div>
               <div class="article-content">
                 <h3 class="article-title">{{ article.title }}</h3>

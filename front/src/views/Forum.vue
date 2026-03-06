@@ -7,18 +7,18 @@
         </div>
         <div class="user-info">
           <div class="user-nickname">{{ me?.nickname || me?.username || '未登录' }}</div>
-          <div class="user-action">{{ token ? '点击编辑个人信息' : '点击去登录' }}</div>
+          <div class="user-action">{{ token ? '点击编辑个人信息' : '点击去登录加入社区' }}</div>
         </div>
       </div>
 
       <el-button class="btn-post" type="primary" @click="openPostDialog">发布帖子</el-button>
 
       <div class="filters">
-        <el-input v-model="keyword" placeholder="搜索标题/内容" clearable @keyup.enter="reload" />
+        <el-input v-model="keyword" placeholder="搜索帖子内容" clearable @keyup.enter="reload" />
         <div class="row">
           <el-select v-model="sortBy" placeholder="排序字段" style="width: 120px">
             <el-option label="最新" value="create_time" />
-            <el-option label="最热(回复)" value="reply_count" />
+            <el-option label="最热 (回复)" value="reply_count" />
             <el-option label="最多赞" value="like_count" />
             <el-option label="最多浏览" value="views" />
           </el-select>
@@ -35,7 +35,7 @@
       <el-card class="post-list-card">
         <template #header>
           <div class="header">
-            <span>帖子列表</span>
+            <span>同伴互助社区</span>
             <el-button link @click="reload">刷新</el-button>
           </div>
         </template>
@@ -45,7 +45,7 @@
         </div>
 
         <div v-else>
-          <div v-if="posts.length === 0" class="empty">暂无帖子</div>
+          <div v-if="posts.length === 0" class="empty">暂无帖子，快来发布第一个帖子吧</div>
 
           <div v-for="p in posts" :key="p.id" class="post-item">
             <div class="left" @click="goDetail(p.id)">
@@ -79,13 +79,14 @@
       </el-card>
     </main>
 
-    <el-dialog v-model="postDialogVisible" title="发布帖子" width="520px">
+    <el-dialog v-model="postDialogVisible" title="发布互助帖子" width="520px">
       <el-form :model="postForm" label-width="70px">
         <el-form-item label="标题">
-          <el-input v-model="postForm.title" maxlength="80" show-word-limit />
+          <el-input v-model="postForm.title" maxlength="80" show-word-limit placeholder="分享您的经历或寻求支持" />
         </el-form-item>
         <el-form-item label="内容">
-          <el-input v-model="postForm.content" type="textarea" :rows="7" maxlength="2000" show-word-limit />
+          <el-input v-model="postForm.content" type="textarea" :rows="7" maxlength="2000" show-word-limit
+            placeholder="请详细描述您的想法和感受" />
         </el-form-item>
       </el-form>
 

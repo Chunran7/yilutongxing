@@ -8,41 +8,41 @@
                     class="custom-carousel">
                     <el-carousel-item>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="carousel-overlay">
-                                <div class="carousel-title">壮丽山川</div>
-                                <div class="carousel-subtitle">探索大自然的鬼斧神工</div>
+                                <div class="carousel-title">关爱医务人员</div>
+                                <div class="carousel-subtitle">关注医护人员的心理健康与职业丧痛</div>
                             </div>
                         </div>
                     </el-carousel-item>
                     <el-carousel-item>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="carousel-overlay">
-                                <div class="carousel-title">宁静湖泊</div>
-                                <div class="carousel-subtitle">感受湖水的静谧与纯净</div>
+                                <div class="carousel-title">专业心理支持</div>
+                                <div class="carousel-subtitle">提供哀伤辅导与丧痛干预服务</div>
                             </div>
                         </div>
                     </el-carousel-item>
                     <el-carousel-item>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="carousel-overlay">
-                                <div class="carousel-title">雪山美景</div>
-                                <div class="carousel-subtitle">体验高山雪峰的震撼</div>
+                                <div class="carousel-title">同伴互助</div>
+                                <div class="carousel-subtitle">与同行分享经历，共同成长</div>
                             </div>
                         </div>
                     </el-carousel-item>
                     <el-carousel-item>
                         <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
                                 style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="carousel-overlay">
-                                <div class="carousel-title">森林秘境</div>
-                                <div class="carousel-subtitle">探索原始森林的奥秘</div>
+                                <div class="carousel-title">疗愈之旅</div>
+                                <div class="carousel-subtitle">走出丧痛阴影，重获内心平静</div>
                             </div>
                         </div>
                     </el-carousel-item>
@@ -61,19 +61,19 @@
                         </el-col>
                         <el-col :span="13">
                             <div class="intro-text">
-                                <h2 class="intro-subtitle">探索世界的每一个角落</h2>
+                                <h2 class="intro-subtitle">陪伴每一位医务人员走过丧痛之路</h2>
                                 <p class="intro-paragraph">
-                                    欢迎来到我们的风景旅游网站！这里是旅行者的天堂，我们致力于为您提供最精彩的旅游资讯、最实用的旅行攻略和最美丽的风景展示。
+                                    欢迎来到医路同行——一个属于医务人员自己的职业丧痛支持社区。我们深知医护人员在面对患者离世时所承受的情感压力，这里是一个安全、温暖的空间，让您可以分享经历、倾诉感受、相互支持。
                                 </p>
                                 <p class="intro-paragraph">
-                                    我们的网站汇聚了全球各地的旅游文章，涵盖自然风光、人文景观、美食文化等多个方面。同时，我们还提供丰富的旅游视频，让您身临其境地感受世界各地的美景。
+                                    本平台由关心医务人员心理健康的同行们共同建设，提供文章、视频和讨论社区。这里的内容来自同行们的真实经历和心得分享，而非专业医疗建议。我们鼓励开放、真诚的交流，让每一位医务人员都能找到理解和共鸣。
                                 </p>
                                 <p class="intro-paragraph">
-                                    在我们的论坛社区，您可以与其他旅行者分享您的旅行经历，交流旅行心得，结识志同道合的朋友。无论您是经验丰富的旅行达人，还是刚刚开始探索世界的新手，都能在这里找到属于您的旅行灵感。
+                                    在我们的同伴互助社区，您可以与其他医护人员分享您的故事、交流应对策略、互相鼓励支持。您并不孤单，我们一起面对，一起成长，一起走过这段艰难的时光。
                                 </p>
                                 <div class="intro-cta">
                                     <el-button type="primary" size="large" round @click="exploreMore">
-                                        开始探索
+                                        加入同伴支持
                                     </el-button>
                                 </div>
                             </div>
@@ -91,11 +91,11 @@
                         <el-col :span="8" v-for="article in articles" :key="article.id">
                             <div class="article-card" @click="goToArticle(article.id)">
                                 <div class="article-img-container">
-                                    <img :src="normalizeMedia(article.firstPicture) || 'https://placehold.co/600x400/3498db/ffffff?text=Travel+' + article.id"
+                                    <img :src="normalizeMedia(article.firstPicture) || 'https://placehold.co/600x400/5D9CEC/ffffff?text=Article+' + article.id"
                                         alt="封面图" class="article-img" />
                                     <div class="article-img-overlay"></div>
-                                    <div class="article-category">旅行攻略</div>
-                                    <div class="article-reading-time">5分钟阅读</div>
+                                    <div class="article-category">哀伤辅导</div>
+                                    <div class="article-reading-time">5 分钟阅读</div>
                                 </div>
                                 <div class="article-content">
                                     <h3 class="article-title">{{ article.title }}</h3>
@@ -103,7 +103,7 @@
                                     <div class="article-meta">
                                         <span class="article-date">{{ article.createTime ? new
                                             Date(article.createTime).toLocaleDateString() : new
-                                                Date().toLocaleDateString() }}</span>
+                                            Date().toLocaleDateString() }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -131,6 +131,7 @@
                                     <h3 class="video-title">{{ video.title }}</h3>
                                     <div class="video-meta">
                                         <span class="video-views">{{ video.views || video.view_count || 0 }} 次观看</span>
+                                        <span v-if="video.duration" class="video-duration">{{ video.duration }}</span>
                                     </div>
                                 </div>
                             </div>

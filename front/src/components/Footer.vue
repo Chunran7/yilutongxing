@@ -1,6 +1,6 @@
 <template>
   <el-footer class="footer">
-    <p>版权所有 © 风景旅游网站 专注于分享全球美景与旅行故事</p>
+    <p>版权所有 © 医路同行 - 医务人员职业丧痛支持平台 专注于为医护人员提供哀伤辅导与心理支持</p>
   </el-footer>
 </template>
 

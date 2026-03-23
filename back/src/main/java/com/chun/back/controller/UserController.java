@@ -165,22 +165,6 @@ public class UserController {
         return Result.success();
     }
 
-    @PostMapping("/follow/{id}/toggle")
-    public Result toggleFollow(@PathVariable Long id, HttpServletRequest request) {
-        Long followerId = getLoginUserId(request);
-        User profile = userService.toggleFollow(followerId, id);
-        return Result.success(profile);
-    }
-
-    /**
-     * 我关注的人列表（需要登录）
-     */
-    @GetMapping("/following")
-    public Result following(HttpServletRequest request) {
-        Long userId = getLoginUserId(request);
-        return Result.success(userService.listFollowing(userId));
-    }
-
     /**
      * 上传头像（需要登录）
      * 前端：multipart/form-data，字段名 file

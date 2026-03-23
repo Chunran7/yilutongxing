@@ -1,6 +1,5 @@
 package com.chun.back.service.impl;
 
-import com.chun.back.mapper.UserFollowMapper;
 import com.chun.back.mapper.UserMapper;
 import com.chun.back.pojo.User;
 import com.chun.back.service.UserService;
@@ -9,16 +8,11 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
-
-    @Autowired
-    private UserFollowMapper userFollowMapper;
 
     @Override
     public User findByUserName(String username) {
@@ -44,28 +38,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getMe(Long userId) {
-        User u = userMapper.selectById(userId);
-        if (u == null)
-            return null;
-        u.setFollowerCount(userMapper.followerCount(userId));
-        u.setFollowingCount(userMapper.followingCount(userId));
-        u.setFollowed(false);
-        return u;
+        return userMapper.selectById(userId);
     }
 
     @Override
     public User getProfile(Long targetId, Long viewerId) {
-        User u = userMapper.selectById(targetId);
-        if (u == null)
-            return null;
-        u.setFollowerCount(userMapper.followerCount(targetId));
-        u.setFollowingCount(userMapper.followingCount(targetId));
-        if (viewerId != null) {
-            u.setFollowed(userMapper.isFollowed(viewerId, targetId) > 0);
-        } else {
-            u.setFollowed(false);
-        }
-        return u;
+        return userMapper.selectById(targetId);
     }
 
     @Override
@@ -90,32 +68,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateAvatar(Long userId, String userPic) {
         userMapper.updateAvatar(userId, userPic);
-    }
-
-    @Override
-    public User toggleFollow(Long followerId, Long followingId) {
-        if (followerId.equals(followingId)) {
-            return getProfile(followingId, followerId);
-        }
-        boolean existed = userFollowMapper.exists(followerId, followingId) > 0;
-        if (existed) {
-            userFollowMapper.delete(followerId, followingId);
-        } else {
-            userFollowMapper.insert(followerId, followingId);
-        }
-        return getProfile(followingId, followerId);
-    }
-
-    @Override
-    public List<User> listFollowing(Long userId) {
-        List<User> list = userMapper.listFollowing(userId);
-        // viewer 就是 userId 本人，followed 恒为 true
-        if (list != null) {
-            for (User u : list) {
-                u.setFollowed(true);
-            }
-        }
-        return list;
     }
 
     @Override

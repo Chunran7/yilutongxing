@@ -20,9 +20,4 @@ public class User {
 
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
-
-    // 公开主页/个人中心扩展字段
-    private Integer followerCount;
-    private Integer followingCount;
-    private Boolean followed; // viewer 是否关注了该用户
 }

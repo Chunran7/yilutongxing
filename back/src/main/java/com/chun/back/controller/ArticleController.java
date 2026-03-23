@@ -104,7 +104,7 @@ public class ArticleController {
     public Result create(@RequestBody Article article, HttpServletRequest request) {
         // 确保只有管理员才能发布文章
         Long adminId = assertAdminLogin(request);
-        // 设置文章的发布者id为当前登录管理员的id
+        // 设置文章的发布者 id 为当前登录管理员的 id
         article.setUserId(adminId);
         Long id = articleService.create(article);
         return Result.success(id);

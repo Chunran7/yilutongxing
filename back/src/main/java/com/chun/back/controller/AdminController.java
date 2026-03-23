@@ -15,10 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.chun.back.pojo.Article;
-
 import com.chun.back.mapper.ArticleMapper;
-import com.chun.back.mapper.VideoMapper;
-import com.chun.back.mapper.PostMapper;
 
 @RestController
 @RequestMapping("/admin")
@@ -32,12 +29,6 @@ public class AdminController {
 
     @Autowired
     private ArticleMapper articleMapper;
-
-    @Autowired
-    private VideoMapper videoMapper;
-
-    @Autowired
-    private PostMapper postMapper;
 
     @PostMapping("/login")
     public Result login(@RequestBody Map<String, String> body, HttpServletRequest request) {
@@ -73,7 +64,7 @@ public class AdminController {
 
     @PostMapping("/admins")
     public Result createAdmin(@RequestBody Map<String, String> body, HttpServletRequest request) {
-        assertAdminLogin(request); // 任何管理员都可以创建其他管理员
+        assertAdminLogin(request);
         return doCreateAdmin(body);
     }
 
@@ -90,9 +81,9 @@ public class AdminController {
         username = username.trim();
 
         if (username.length() < 3 || username.length() > 50)
-            return Result.error("用户名长度需在3~50之间");
+            return Result.error("用户名长度需在 3~50 之间");
         if (password.length() < 6)
-            return Result.error("密码至少6位");
+            return Result.error("密码至少 6 位");
 
         if (adminMapper.findByUsername(username) != null)
             return Result.error("用户名已存在");
@@ -111,18 +102,12 @@ public class AdminController {
         return Result.success(Map.of("id", a.getId()));
     }
 
-    // ============================
-    // 3) 管理员功能（示例）
-    // ============================
-
     @GetMapping("/stats")
     public Result stats(HttpServletRequest request) {
         assertAdminLogin(request);
         Map<String, Object> data = new HashMap<>();
         data.put("userCount", userMapper.countAll());
         data.put("articleCount", articleMapper.countNotDeleted());
-        data.put("videoCount", videoMapper.countNotDeleted());
-        data.put("postCount", postMapper.countNotDeleted());
         return Result.success(data);
     }
 
@@ -140,7 +125,7 @@ public class AdminController {
     }
 
     // ============================
-    // 4) 文章管理
+    // 文章管理
     // ============================
 
     @GetMapping("/articles")

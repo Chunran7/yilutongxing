@@ -15,13 +15,4 @@ public interface ArticleService {
 
     Long create(Article article);
 
-    /** 我点赞的文章 */
-    List<Article> myLiked(Long userId);
-
-    /** 我收藏的文章 */
-    List<Article> myFavorited(Long userId);
-
-    Map<String, Object> toggleLike(Long articleId, Long userId);
-
-    Map<String, Object> toggleFavorite(Long articleId, Long userId);
 }

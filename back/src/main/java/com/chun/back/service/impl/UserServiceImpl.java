@@ -64,24 +64,4 @@ public class UserServiceImpl implements UserService {
         u.setUserPic(userPic);
         userMapper.updateProfile(u);
     }
-
-    @Override
-    public void updateAvatar(Long userId, String userPic) {
-        userMapper.updateAvatar(userId, userPic);
-    }
-
-    @Override
-    public void resetPasswordByEmail(String email, String newPassword) {
-        if (email == null || email.isBlank())
-            throw new RuntimeException("邮箱不能为空");
-        if (newPassword == null || newPassword.isBlank())
-            throw new RuntimeException("密码不能为空");
-        User u = userMapper.findByEmail(email);
-        if (u == null)
-            throw new RuntimeException("该邮箱未绑定任何用户");
-        String md5 = Md5Util.getMD5String(newPassword);
-        int rows = userMapper.updatePasswordById(u.getId(), md5);
-        if (rows != 1)
-            throw new RuntimeException("更新密码失败");
-    }
 }

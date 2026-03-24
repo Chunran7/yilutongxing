@@ -109,30 +109,4 @@ public class ArticleController {
         Long id = articleService.create(article);
         return Result.success(id);
     }
-
-    // ------------------- 我的点赞/收藏 -------------------
-
-    @GetMapping("/me/liked")
-    public Result myLiked(HttpServletRequest request) {
-        Long userId = getLoginUserId(request);
-        return Result.success(articleService.myLiked(userId));
-    }
-
-    @GetMapping("/me/favorited")
-    public Result myFavorited(HttpServletRequest request) {
-        Long userId = getLoginUserId(request);
-        return Result.success(articleService.myFavorited(userId));
-    }
-
-    @PostMapping("/{id}/like/toggle")
-    public Result toggleLike(@PathVariable Long id, HttpServletRequest request) {
-        Long userId = getLoginUserId(request);
-        return Result.success(articleService.toggleLike(id, userId));
-    }
-
-    @PostMapping("/{id}/favorite/toggle")
-    public Result toggleFavorite(@PathVariable Long id, HttpServletRequest request) {
-        Long userId = getLoginUserId(request);
-        return Result.success(articleService.toggleFavorite(id, userId));
-    }
 }

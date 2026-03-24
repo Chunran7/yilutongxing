@@ -12,6 +12,7 @@
       <el-menu-item index="/forum" @click="router.push('/forum')">同伴互助</el-menu-item>
     </el-menu>
     <div class="navbar-right">
+      <!-- 已禁用用户登录功能
       <el-button v-if="!isLoggedIn" @click="router.push('/login')" type="primary">登录/注册</el-button>
 
       <el-dropdown v-else trigger="click" @command="handleCommand">
@@ -28,6 +29,7 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      -->
     </div>
   </el-header>
 </template>
@@ -37,78 +39,77 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import logo from '@/assets/logo.png'
-import { getMeService } from '@/api/user'
-import { normalizeMedia } from '@/utils/media.js'
+// import { getMeService } from '@/api/user'
+// import { normalizeMedia } from '@/utils/media.js'
 
 const route = useRoute()
 const router = useRouter()
 const activeIndex = computed(() => route.path)
 
-// 添加登录状态管理
-const isLoggedIn = ref(false)
-const me = ref(null)
+// 已禁用登录状态管理
+// const isLoggedIn = ref(false)
+// const me = ref(null)
 
-const displayName = computed(() => {
-  const u = me.value
-  if (!u) return ''
-  return u.nickname || u.username || ''
-})
+// const displayName = computed(() => {
+//   const u = me.value
+//   if (!u) return ''
+//   return u.nickname || u.username || ''
+// })
 
-const avatarSrc = computed(() => normalizeMedia(me.value?.userPic || me.value?.user_pic || ''))
+// const avatarSrc = computed(() => normalizeMedia(me.value?.userPic || me.value?.user_pic || ''))
 
-const refreshAuth = async () => {
-  const token = localStorage.getItem('token')
-  isLoggedIn.value = !!token
-  if (!token) {
-    me.value = null
-    return
-  }
-  // 优先用缓存，避免每次切页都请求
-  const cache = localStorage.getItem('user')
-  if (cache) {
-    try {
-      me.value = JSON.parse(cache)
-    } catch {
-      // ignore
-    }
-  }
-  try {
-    const u = await getMeService()
-    me.value = u
-    localStorage.setItem('user', JSON.stringify(u))
-  } catch {
-    // token 可能无效，交给 request.js 的 401 统一处理
-  }
-}
+// const refreshAuth = async () => {
+//   const token = localStorage.getItem('token')
+//   isLoggedIn.value = !!token
+//   if (!token) {
+//     me.value = null
+//     return
+//   }
+//   const cache = localStorage.getItem('user')
+//   if (cache) {
+//     try {
+//       me.value = JSON.parse(cache)
+//     } catch {
+//       // ignore
+//     }
+//   }
+//   try {
+//     const u = await getMeService()
+//     me.value = u
+//     localStorage.setItem('user', JSON.stringify(u))
+//   } catch {
+//     // token 可能无效，交给 request.js 的 401 统一处理
+//   }
+// }
 
 // 页面加载时检查登录状态
-onMounted(() => {
-  refreshAuth()
-})
+// onMounted(() => {
+//   refreshAuth()
+// })
 
-watch(
-  () => route.fullPath,
-  () => refreshAuth()
-)
+// watch(
+//   () => route.fullPath,
+//   () => refreshAuth()
+// )
 
-const logout = () => {
-  localStorage.removeItem('token')
-  localStorage.removeItem('user')
-  me.value = null
-  isLoggedIn.value = false
-  ElMessage.success('已退出登录')
-  router.push('/login')
-}
+// const logout = () => {
+//   localStorage.removeItem('token')
+//   localStorage.removeItem('user')
+//   me.value = null
+//   isLoggedIn.value = false
+//   ElMessage.success('已退出登录')
+//   router.push('/login')
+// }
 
-const handleCommand = (cmd) => {
-  if (cmd === 'profile') {
-    router.push('/profile/edit')
-    return
-  }
-  if (cmd === 'logout') {
-    logout()
-  }
-}
+// const handleCommand = (cmd) => {
+//   if (cmd === 'profile') {
+//     router.push('/profile/edit')
+//     return
+//   }
+//   if (cmd === 'logout') {
+//     logout()
+//   }
+// }
 </script>
 
 <style scoped>

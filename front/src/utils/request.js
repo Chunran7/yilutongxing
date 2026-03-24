@@ -109,30 +109,9 @@ instance.interceptors.response.use(
         return Promise.reject(new Error(payload?.msg || "需要管理员登录"));
       }
 
-      // ✅ 普通用户：对大多数接口跳 /login，但是对某些公共接口（如登录/注册/忘记密码）不要自动跳转
-      const publicAuthPaths = [
-        "/user/login",
-        "/user/register",
-        "/user/forgot",
-        "/user/forgot/send",
-        "/user/forgot/verify",
-        "/user/forgot/reset",
-      ];
-      const isPublicAuth = publicAuthPaths.some(
-        (p) => requestPath === p || requestPath.startsWith(p)
-      );
-      if (isPublicAuth) {
-        // 不自动跳转也不弹出全局登录提示，交由调用方处理错误信息
-        return Promise.reject(new Error(payload?.msg || msg));
-      }
-
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      ElMessage.error(payload?.msg || "请先登录");
-
-      const redirect = encodeURIComponent(currentPath);
-      window.location.replace(`/login?redirect=${redirect}`);
-      return Promise.reject(new Error(payload?.msg || "请先登录"));
+      // ✅ 普通用户已禁用登录验证：不再自动跳转和清除 token
+      // 仅当接口明确返回 401 时才显示错误信息，由调用方自行处理
+      return Promise.reject(new Error(payload?.msg || msg));
     }
 
     return Promise.reject(new Error(msg));

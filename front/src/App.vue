@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-if="route.path !== '/login' && !route.path.startsWith('/admin')" />
+    <Navbar v-if="!route.path.startsWith('/admin')" />
     <router-view v-slot="{ Component, route }">
       <keep-alive>
         <component :is="Component" v-if="route.meta.keepAlive" :key="route.fullPath" />

@@ -9,7 +9,8 @@ CREATE DATABASE IF NOT EXISTS `dbproject` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 USE `dbproject`;
 
 -- 为了方便重建（尤其是有外键时）
-SET FOREIGN_KEY_CHECKS = 0;
+SET
+  FOREIGN_KEY_CHECKS = 0;
 
 -- =========================================================
 -- 1) user（用户表 - 仅保留基础信息）
@@ -31,7 +32,7 @@ CREATE TABLE `user` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '用户表';
 
 -- =========================================================
--- 2) Article (文章表 - 移除 like_count 字段)
+-- 2) Article 
 -- =========================================================
 DROP TABLE IF EXISTS `article`;
 
@@ -73,4 +74,5 @@ CREATE TABLE `admin` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '管理员表';
 
 -- 恢复外键检查
-SET FOREIGN_KEY_CHECKS = 1;
+SET
+  FOREIGN_KEY_CHECKS = 1;

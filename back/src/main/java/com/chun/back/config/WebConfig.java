@@ -1,7 +1,6 @@
 package com.chun.back.config;
 
 import com.chun.back.interceptors.AdminInterceptor;
-import com.chun.back.interceptors.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -10,9 +9,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
-        @Autowired
-        private LoginInterceptor loginInterceptor;
 
         @Autowired
         private AdminInterceptor adminInterceptor;
@@ -28,25 +24,25 @@ public class WebConfig implements WebMvcConfigurer {
                                                 "/admin/register",
                                                 "/admin/apply");
 
-                // ✅ 2) 用户拦截器：拦所有，但必须排除 /admin/**（否则你就会“登录后立刻被踢”）
-                registry.addInterceptor(loginInterceptor)
-                                .addPathPatterns("/**")
-                                .excludePathPatterns(
-                                                // 用户自身放行
-                                                "/user/login",
-                                                "/user/register",
-                                                // 忘记密码相关接口放行（允许未登录访问）
-                                                "/user/forgot/**",
-                                                "/user/profile/*",
+                // ✅ 2) 用户拦截器已禁用 - 现在普通用户无需登录即可访问所有接口
+                // registry.addInterceptor(loginInterceptor)
+                //                 .addPathPatterns("/**")
+                //                 .excludePathPatterns(
+                //                                 // 用户自身放行
+                //                                 "/user/login",
+                //                                 "/user/register",
+                //                                 // 忘记密码相关接口放行（允许未登录访问）
+                //                                 "/user/forgot/**",
+                //                                 "/user/profile/*",
 
-                                                // 公共资源放行（按你项目实际补）
-                                                "/uploads/**",
-                                                "/static/**",
-                                                "/favicon.ico",
-                                                "/error",
+                //                                 // 公共资源放行（按你项目实际补）
+                //                                 "/uploads/**",
+                //                                 "/static/**",
+                //                                 "/favicon.ico",
+                //                                 "/error",
 
-                                                // ✅ 关键：排除所有管理员接口
-                                                "/admin/**");
+                //                                 // ✅ 关键：排除所有管理员接口
+                //                                 "/admin/**");
         }
 
         @Override
